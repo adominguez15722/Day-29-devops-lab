@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
+let {btnFun} = require('../public/index.js')
 
 const Rollbar = require('rollbar')
 const rollbar = new Rollbar({
@@ -27,6 +28,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/main.html'))
 })
 
+app.get('/', (req, res) => {
+
+
+    res.status(400).send(btnFun)
+})
 
 
 

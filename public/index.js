@@ -1,6 +1,4 @@
-const Rollbar = require("rollbar")
-
+function btnFun() {
 let btn = document.querySelector('button')
 btn.addEventListener('click', () => {
-    Rollbar.log('this is an error')
-    console.log('should not have pressed that')})
+    console.log('should not have pressed that')})}
