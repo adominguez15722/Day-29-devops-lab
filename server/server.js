@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
-let {btnFun} = require('../public/index.js')
+let {btnFun} = require('../public/index')
 
 const Rollbar = require('rollbar')
 const rollbar = new Rollbar({
@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 
 app.get('/', (req, res) => {
 
-
+    rollbar.log('this is an error')
     res.status(400).send(btnFun)
 })
 
