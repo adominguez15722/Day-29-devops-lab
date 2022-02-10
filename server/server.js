@@ -1,6 +1,15 @@
+require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
+
+const Rollbar = require('rollbar')
+const rollbar = new Rollbar({
+  accessToken: process.env.ROLLBAR_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
 
 const app = express()
 
@@ -10,8 +19,17 @@ app.use(cors())
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
+
+    try {
+        nonExistentFunction();
+      } catch (error) {
+        console.error(error)};
+
+
+
     res.sendFile(path.join(__dirname, '../public/main.html'))
 })
+
 
 
 
