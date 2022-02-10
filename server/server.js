@@ -19,12 +19,9 @@ app.use(cors())
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-
-    try {
-        nonExistentFunction();
-      } catch (error) {
-        console.error(error)};
-
+   
+    console.log('hit')
+    rollbar.log('Someone hit the server')
 
 
     res.sendFile(path.join(__dirname, '../public/main.html'))
